@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      section {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 30% 70%;
+      }
+
+      form {
+        width: 300px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(100, 215, 156);
+      }
+
+      label , button {
+        margin: 20px;
+      }
+      button{
+
+
+        padding: 5px;
+        border-radius: 10px;
+      }
+      input{
+        border: none;
+        padding: 5px;
+        border-radius: 10px;
+      }
+      .time {
+        width: 80%;
+        background-color: rgb(100, 215, 156);
+        padding: 10px;
+        border-radius: 10px;
+        border: 2px dashed rgb(51, 164, 179);
+        margin: 10px;
+      }
+      .weather{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        
+      }
+      .info{
+        width: 80%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .info>div{
+        width: 120px;
+        height: 100px;
+        background-color: rgb(100, 215, 156);
+        border: 2px dashed rgb(51, 164, 179);
+        border-radius: 10px;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <form method="GET">
+        <h2>weather app</h2>
+        <label for="city">Enter city name</label>
+        <input type="text" name="city" id="city" required />
+        <button type="button" id="btn">search</button>
+      </form>
+      <div id="weather" class="weather"></div>
+    </section>
+  </body>
+  <script src="./script.js"></script>
+
+
+
+  <!-- get openmap data with axios and without curl -->
+  <!-- <script>
+    var input = document.getElementById("city");
+    var btn = document.getElementById("btn");
+    btn.addEventListener("click" , ()=>{
+      var inputVal = input.value;
+      apikey = "6eae1da7c517d33af017a696dbcc36f3";
+      if(inputVal != ''){
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apikey}&units=metric`).then( (r)=>{
+        const json = r.data;
+        const myHTML = `
+        <h2>${json["name"]} Weather Status</h2>
+        <div class="time">
+            <div>${new Date().toLocaleString()}</div>
+            <div>weather : ${json["weather"][0]["main"]}</div>
+            <div>weather description :${json["weather"][0]["description"]}</div>
+        </div>
+
+        <div class="info">
+            <div><p>minimum temperature:</p> <p>${json["main"]["temp_min"]} degree </p>  </div>
+            <div><p>maximum temperature:</p>  <p>${json["main"]["temp_max"]} degree</p>  </div>
+            <div><p>humidity:</p> <p>${json["main"]["humidity"]}%</p>  </div>
+            <div><p>Wind:</p>  <p>${json["wind"]["speed"]} km/h</p> </div>
+        </div> 
+        
+        `;
+        document.getElementById("weather").innerHTML = myHTML;
+      })
+      }else{
+        const myHTML =`
+            <h2>enter city name</h2>
+        `;
+        document.getElementById("weather").innerHTML = myHTML;
+      }
+    }) -->
+  <!-- </script> -->
+</html>
